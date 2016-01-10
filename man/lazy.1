@@ -1,0 +1,79 @@
+.\" This man page was written by Shiju P. Nair <shiju@infovillage.net>
+.TH LAZY 1 "Dec 2, 2002"
+.SH NAME
+lazy \- A simple CD player with CDDB support to display song titles
+
+.SH SYNOPSIS
+\fBlazy [ -crkv ] [ -d ] [ -l\fP \fI<list>\fP \fB] [ -o \fI<track>\fP \fB ] [ -t [r|e] ] [ -s ] [ -h ]\fP
+
+.SH DESCRIPTION
+\fBLazy\fP is a console-based CD player with support for CDDB/FreeDB. 
+It displays artist, album, and song names, looking at the main 
+freedb-server for unrecognized songs. It can also extract audio digitally 
+if the CD-ROM drive does not have an analog audio cable connected to it. 
+.SH OPTIONS
+.TP 
+.BR -c
+close the tray before playing the disk.
+.TP
+.BR -d
+use digital extraction. 
+.TP
+.B -k
+keep the music playing when the program exits.
+.TP
+.B -l
+play only track numbers given by \fI<list>\fP.
+.TP
+.B -o
+start playing from track \fI<track>\fP.
+.TP
+.B -r
+play in random mode.
+.TP
+.B -s
+just show the track names, without playing them.
+.TP
+.B -f <device>
+override the CDROM device specified in \fI ~/.lazyrc
+.TP
+.B -t[r|e]
+show the track's elapsed/remaining time.
+.br
+.IR e 
+  displays elapsed time.
+
+.IR r
+  displays remaining time.
+
+If none is specified, behave as set in \fI ~/.lazyrc
+.TP
+.B -v 
+verbose mode.
+.TP
+.B -h
+lists help.
+
+.SH CONFIG FILES
+.I ~/.lazyrc
+.RS
+Per user configuration file. 
+.nf
+
+Opions available are:
+
+CDDEV=/dev/cdrom                # the CDROM device
+AUDIODEV=/dev/dsp               # the AUDIO dev, used by digital extr.
+ADDRESS=freedb.freedb.org       # the CDDB server address
+PORT=888                        # the CDDB server port
+CDDB_PATH=~/cddb                # path to the local cddb_dir
+REMAINING | ELAPSED             # display remaining or elapsed time
+.fi
+
+.SH AUTHOR
+Lucas Correia Villa Real  <lucasvr@gobolinux.org>
+
+This manual page was written by Shiju P. Nair <shiju@infovillage.net>,
+for the Debian GNU/Linux system
+
+Enjoy it!

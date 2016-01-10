@@ -1,0 +1,132 @@
+Mon Mar 21 11:28:18 BRT 2005
+	[0.24e]
+	Fixed the build system by changing src/Makefile.am to install lazyrc into the 
+	SYSCONF dir.
+
+Sun May  2 00:04:25 BRT 2004
+	[0.24d]
+	Fixed a bad malloc on cddb_get.c. Thanks Colin Leroy for the hint.
+	A few cleanups were also made, and a problem with a missing errno.h was fixed as 
+	well.
+
+Mon Apr 28 13:27:14 BRT 2003
+	[0.24c]
+	Fixed a problem related to the new optimization levels of autoconf (-O2) and the
+	error related to ntoh macros on /usr/include/linux/byteorder/generic.h (where a patch 
+	for it is available at http://sources.redhat.com/ml/crossgcc/2002-05/msg00073.html). 
+	The fix to solve the problem on Lazy was simple, though: just defined CFLAGS on 
+	configure.in, avoiding autoconf to set it. 
+	
+Thu Apr 24 00:14:52 BRT 2003
+	[0.24b]
+	Added command-line support to specify which CDROM device to use. This option 
+	overrides the default one set in lazyrc.
+
+Sun Apr 20 15:03:50 BRT 2003
+	[0.24a]
+	Added support to *BSD. The code was tested against FreeBSD 4.3.
+	Fixed the multiple lame open()/close() in play_cd(). Now the descriptor is sent to 
+	the function, being opened once. The return to open(CDDEV) was being wrong checked,
+	and so was fixed. Some memory leaks were also removed.
+
+Fri Dec 20 02:17:11 BRST 2002
+	[0.23d]
+	A lot of bugs were fixed. I spent some time looking for possible buffer overflows,
+	and possibilities of such problems to occur were fixed. TAB support on the config 
+	file is also recognized now by the 'pseudo-parser'.
+	The read() syscall is now also better handled by the software; Lazy no more tryies
+	to get everything in a single read() ;)
+	Incorporation of the man page created by Shiju p. Nair was also done.
+	
+Wed Dec  4 00:55:45 BRST 2002
+	[0.23c]
+	Woops.. fixed the 'overlap' flag to zero. The old value was letting the music to be
+	interrupted sometimes.
+
+Tue Dec  3 01:32:16 BRST 2002
+	[0.23b]
+	Okay.. a feature to use digital extraction was implemented. Now, if one doesn't have
+	an analog cable plugged from the CD-ROM drive into the soundcard, the '-d' flag can
+	be useful. I didn't implement the '-t' features on it. If you want it, do it yourself 
+	and send me a patch later.
+	I still didn't have enough time to check for the 'update' freedb feature. I still
+	need to fix some sockets bugs I know exists.
+	
+Tue Jul 19 09:36:42 BRT 2001
+	[0.23a]
+	Added support to send data to the CDDB server. The program is being submited to the 
+    FreeDB to be checked for eventual bugs. The program was also completely rewritten 
+    in order to correctly deal with GNU-based operating systems. Lazy now shows always 
+    the playlist, rather than only when using verbose mode. Aah, removed a getpid() 
+    that was not being used! :)
+
+Tue Mar 20 16:43:17 BRT 2001
+	[0.22d]
+	Corrected a bug when skipping the last track. Now, if you do it, it will abort the
+	program, and will not keep playing the song.. :)
+	Also added the option to stop the program by pressing '' 2 times.
+	Removed the display of music offsets when using the VERBOSE option. I think normal
+	users won't see that 'garbage'. If you want to see it, please change the DEBUG
+	variable in the playcd.c to '1'.
+ 
+Mon Feb 19 00:50:01 BRST 2001
+	[0.22c]
+	Corrected a bug discovered when trying to skip a track, when running lazy with the
+	-t option.
+	
+Sat Feb 17 02:46:37 BRST 2001
+	[0.22c]
+	Finally added an option to skip tracks. Now when the music is playing, you can press
+	CTRL-C to skip it, or CTRL-BREAK to quit the program.
+	
+Fri Feb 16 16:50:21 BRST 2001
+	[0.22b]
+	Added a new feature: '-s'. This will only show the tracks in the CD, without playing
+	them. It's usefull when you wanna list the track names in a quick way. I've changed
+	some problems with the output, the album name was still being printed with an extra
+	space in the end. I've also changed a little mistake: when -o was informed with an 
+	invalid	track, it was printing 'track-1' instead of 'track'.
+
+Mon Feb 12 22:58:32 BRST 2001
+	[0.22a]
+	Discovered a bug when using the -o option.. the music being played was the track+1,
+	but the problem has been patched NOW.
+	
+Mon Feb 12 21:40:03 BRST 2001
+	[0.22a]
+	Fixed some bugs from the random function.
+
+Sun Feb 11 14:58:43 BRST 2001
+	[0.22a]
+	Cleaned the code, removing a line which was cutting off some letters from the album
+	name some times.
+
+Tue Fev 06 19:07:48 BRST 2001
+	[0.22a]
+	Received some contribution from Ulysses Almeida <munky@maluco.com.br>:
+	Added -r option (random suport)
+	Added -l option (list support)
+
+Mon Jan 29 20:56:27 BRST 2001
+	[0.21c]
+	Corrected a little bug: now showing "Track time: 6:06" instead of "Track time: 6: 6".
+	Changed the '-s' option (to stop the music when the program exit) to the '-k' option
+	(to keep the music playing when the program exits). The default is now to stop it.
+	Changed some comments in the source, too, and added another comments to the .lazyrc
+	file.
+	
+Sat Jan 20 20:55:48 BRST 2001
+	[0.21b]
+	Added autoconf/automake support
+
+Fri Jan 19 02:34:16 BRST 2001
+	[0.21a]
+	Added new options to it. Lazy can now close the cd_device, start playing from a given 
+	track, stop the music when the program exit, show the remaining time from the track...
+	Give a look on the available options running 'lazy -h'. I added also some checks for 
+	the existence of the CDDB directory, because I forget it in the 0.19alpha version.
+	Aah! Also created a config file to the program, called by $(HOME)/.lazyrc . :)
+
+Thu Jan 18 15:08:52 BRST 2001
+	[0.21a]
+	I'm just startig to write this file.. I'm too lazy! 

@@ -1,0 +1,63 @@
+------------------------------------------------------------------------
+  Lazy - A simple CD player with CDDB support to display song titles
+------------------------------------------------------------------------
+
+
+INTRODUCTION:
+-------------
+	Hello Folks!
+
+	This  is  Lazy, a  *NIX  shell CD player.  My initial idea for this 
+	software  was to  have a simple program which  could play  CD's and 
+	display Artist and Song names, with an output as simple as the default 
+	output from mpg123.
+
+
+FEATURES:
+---------
+	Lazy has some options you can set in the cmd line:
+	
+	$ lazy -h
+	Available options:
+		-h         : this help
+		-v         : verbose mode
+		-k         : keep the music playing when the program exits
+		-c         : close the tray before playing the disc
+		-d         : use digital extraction
+		-f <device>: override the CDROM device specified in ~/.lazyrc
+		-t[r|e]    : shows the track's elapsed/remaining time
+					 e - display elapsed time
+					 r - display remaining time
+					 if none is specified, behave as set in ~/.lazyrc
+					 This function will not work when using digital 
+					 extraction. Why? Aah... I don't want to implement
+					 that. You can copy+paste the code from playcd.c
+					 to digital.c if you want it.
+		-r         : play in random mode
+		-s         : just show the track names, without playing them
+		-l <list>  : play only track numbers given by <list>
+		-o <track> : start playing from track <track>
+	
+	You can combine these options, too:
+
+	$ lazy -cvtr -o 9
+	This command will close the CD-tray, show the remaining time, be
+	verbose in every step and will start playing from track #9.
+
+	$ lazy -l 1 4 5
+	This will play only the tracks #1, #4 and #5
+	
+	Lazy will *NOT* work when using the random function with the -o option.
+
+
+CONFIG FILE:
+------------
+	Lazy also installs a config file in your home, found at ~/.lazyrc.
+	These are the configurable settings:
+	
+	CDDEV=/dev/cdrom                # the CDROM device
+	AUDIODEV=/dev/dsp               # the AUDIO dev, used by digital extr.
+	ADDRESS=freedb.freedb.org       # the CDDB server address
+	PORT=888                        # the CDDB server port
+	CDDB_PATH=~/cddb                # path to the local cddb_dir
+	REMAINING | ELAPSED             # display remaining or elapsed time

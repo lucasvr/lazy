@@ -1,0 +1,30 @@
+#
+# This is a sample configuration file for the Lazy CD player.
+# Change the settings below to fit to your configuration or preferences.
+#
+# Below are some alternate CDDB servers:
+#
+# ADDRESS              PORT          LOCATION
+# freedb.freedb.org    888/8880      Random freedb server
+# freedb.freedb.de     888/8880      Dortmund, Germany
+# at.freedb.org        888/8880      Vienna, Austria
+# ca.freedb.org        888/8880      Winnipeg, Manitoba, Canada
+# de.freedb.org        888/8880      Berlin, Germany
+# fr.freedb.org        888/8880      Paris, France
+# no.freedb.org        888/8880      Tromso, Norway
+# ua.freedb.org        888/8880      Kiev, Ukraine
+# uk.freedb.org        888/8880      London, United Kingdom
+# us.freedb.org        888/8880      San Jose, California, USA
+#
+# You can find a more reliable freedb servers by looking at www.freedb.org.
+# Send any questions or suggestions to lucasvr@gobolinux.org.
+# If you don't want to check for Freedb servers on startup, just use a
+# wrong ADDRESS, such as "freedb.freedb.org_"
+#
+
+CDDEV=/dev/cdrom                # the CDROM device
+AUDIODEV=/dev/dsp               # the AUDIO device, used w/ digital extraction
+ADDRESS=freedb.freedb.org       # the CDDB server address
+PORT=888                        # the CDDB server port
+CDDB_PATH=~/cddb                # path to the local cddb information
+REMAINING                       # display remaining time by default instead of elapsed
