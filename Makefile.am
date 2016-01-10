@@ -1,4 +1,4 @@
-AUTOMAKE_OPTIONS = foreign gnu no-dependencies
+AUTOMAKE_OPTIONS = foreign no-dependencies
 
 EXTRA_DIST = BUGS \
 	     COPYING \
